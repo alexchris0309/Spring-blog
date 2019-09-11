@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<header th:replace="partials/header :: my-header">
+</header>
+<body>
+<div th:replace="partials/navbar :: my-navbar">
+</div>
+<div th:if="${isTrue}">
+    <p> you guessed  <span th:text="${n}"></span> The number was <span th:text="${roll}"></span>, you guessed correctly!</p>
+</div>
+<div th:if="${!isTrue}">
+    <p> you guessed  <span th:text="${n}"></span> The number was <span th:text="${roll}"></span>, you guessed incorrectly!</p>
+
+</div>
+
+
+
+</body>
+</html>

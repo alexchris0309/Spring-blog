@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+</head>
+<body>
+
+
+
+<div th:each="post : ${posts}">
+    <h1 th:text="${post.title}"></h1>
+    <p th:text="${post.body}"></p>
+
+    <form th:action ="@{/post/{postid}/delete(postid=${post.id})}" method="POST">
+        <button>Delete</button>
+    </form>
+
+
+    <form th:action ="@{/post/{postid}/edit(postid=${post.id})}" th:method="GET" th:object="${post}">
+        <button>Edit</button>
+    </form>
+
+    <form th:action ="@{/post/{postid}(postid=${post.id})}" method="GET">
+        <button>Details</button>
+    </form>
+
+</div>
+
+
+
+
+
+</body>
+</html>
