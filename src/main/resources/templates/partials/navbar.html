@@ -1,14 +1,33 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 
     <div th:fragment="my-navbar">
         <nav>
             <div class="nav-wrapper">
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
-                    <li><a href="/roll-dice">Home</a></li>
+                    <li sec:authorize="isAuthenticated()"><a href="/post/create">Create</a></li>
+                    <li><a href="/post">Home</a></li>
+                    <li><a sec:authorize="!isAuthenticated()" href="/register">Register</a></li>
+                    <li>
+                        <form sec:authorize="!isAuthenticated()" th:action="@{/login}" th:method="get">
+                            <button class="btn waves-effect waves-light" type="submit" name="action">Login
+                            </button>
+                        </form>
+                    </li>
+                    <li>
+                        <form sec:authorize="isAuthenticated()" th:action="@{/logout}" th:method="post">
+                            <button class="btn waves-effect waves-light" type="submit" name="action">Logout
+                            </button>
+                        </form>
+                    </li>
+
                 </ul>
             </div>
+
         </nav>
     </div>
 
 </html>
+
+

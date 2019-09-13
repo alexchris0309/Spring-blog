@@ -6,6 +6,7 @@ import com.codeup.springblog.repos.PostRepository;
 import com.codeup.springblog.repos.UserRepository;
 import com.codeup.springblog.services.EmailService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -81,9 +82,9 @@ public class PostController {
 
     @PostMapping("/post/create")
     public String createPost( @ModelAttribute Post post){
-
-        User user =userDao.findOne(1L);
-        post.setOwner(user);
+        User userSession=(User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User userdb =userDao.findOne(userSession.getId());
+        post.setOwner(userdb);
         Post savedPost=postDao.save(post);
 
         emailService.prepareAndSend(
