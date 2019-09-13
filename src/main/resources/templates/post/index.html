@@ -33,16 +33,18 @@
                     <i class="material-icons ">visibility</i>
                 </button>
                 </form>
-                <form sec:authorize="isAuthenticated()" th:action ="@{/post/{postid}/edit(postid=${post.id})}" th:method="GET" th:object="${post}">
+                <form sec:authorize="isAuthenticated()" th:if="${#authentication.principal.id}==${post.owner.id}"   th:action ="@{/post/{postid}/edit(postid=${post.id})}" th:method="GET" th:object="${post}">
                 <button class="btn waves-effect waves-light" type="submit" name="action">
                 <i class="material-icons ">border_color</i>
                 </button>
                 </form>
-                <form sec:authorize="isAuthenticated()" th:action ="@{/post/{postid}/delete(postid=${post.id})}" method="POST">
+
+                <form sec:authorize="isAuthenticated()" th:if="${#authentication.principal.id}==${post.owner.id}"  th:action ="@{/post/{postid}/delete(postid=${post.id})}" method="POST">
                 <button class="btn waves-effect waves-light" type="submit" name="action">
                 <i class="material-icons ">delete</i>
                 </button>
                 </form>
+
             </div>
             <div class="card-reveal">
                 <span class="card-title grey-text text-darken-4" th:text="${post.title}">

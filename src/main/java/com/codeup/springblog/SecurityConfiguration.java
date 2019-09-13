@@ -36,7 +36,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 /* Login configuration */
                 .formLogin()
                 .loginPage("/login")
-                .defaultSuccessUrl("/post") // user's home page, it can be any URL
+                .defaultSuccessUrl("/profile") // user's home page, it can be any URL
                 .permitAll() // Anyone can go to the login page
                 /* Logout configuration */
                 .and()
@@ -51,7 +51,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .and()
                 .authorizeRequests()
                 .antMatchers(
-                        "/post/create", // only authenticated users can create ads
+                        "/post/create","/profile", // only authenticated users can create ads
                         "/post/{id}/edit" // only authenticated users can edit ads
                 )
                 .authenticated()
