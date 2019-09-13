@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8" />
-    <title>Title</title>
-</head>
+<header>
+    <th:block th:replace="partials/header :: my-header('Posts')">
+    </th:block>
+</header>
 <body>
-<!--<form th:action ="@{/post/{postid}/edit(postid=${post.id})}" th:method="POST" th:object="${post}">-->
+<div th:replace="partials/navbar :: my-navbar"></div>
+
+
 
 <form th:action ="@{'/post/'+ ${post.id} +'/edit'}" th:method="POST" th:object="${post}">
     <input type="text"  th:field="*{title}" />

@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8" />
-    <title>Title</title>
-</head>
+<header>
+    <th:block th:replace="partials/header :: my-header('Posts')">
+    </th:block>
+</header>
+
 <body>
+<div th:replace="partials/navbar :: my-navbar"></div>
 
 
 <h2>Create a new Post!</h2>
