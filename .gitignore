@@ -32,4 +32,4 @@ build/
 src/main/resources/application.properties
 
 
-src/main/resources/static/js/Keys.js
+src/main/resources/static/js/filestackkey.js

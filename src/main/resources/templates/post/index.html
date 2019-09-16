@@ -26,7 +26,8 @@
 
             </div>
             <div class="card-content">
-                <span class="card-title activator grey-text text-darken-4" th:text="${post.title}"><i class="material-icons right">more_vert</i></span>
+                <span class="card-title activator grey-text text-darken-4" th:text="${post.title}">
+                    <i class="material-icons right">more_vert</i></span>
 
                 <form th:action ="@{/post/{postid}(postid=${post.id})}" method="GET">
                 <button class="btn waves-effect waves-light" type="submit" name="action">
