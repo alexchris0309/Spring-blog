@@ -21,20 +21,18 @@
 
 <!--                <img class="activator" th:src="@{'/pictures/pug.jpg'}" />-->
 
-                <img id="image" class="activator" th:src="${post.images[0].path}" />
-
+                <img id="image" class="activator" th:if="${!#arrays.isEmpty(post.images)}" th:src="${post.images[0].path}" />
 
             </div>
             <div class="card-content">
-                <span class="card-title activator grey-text text-darken-4" th:text="${post.title}">
-                    <i class="material-icons right">more_vert</i></span>
+                <span class="card-title activator grey-text text-darken-4" th:text="${post.title}"><i class="material-icons right">more_vert</i></span>
 
                 <form th:action ="@{/post/{postid}(postid=${post.id})}" method="GET">
                 <button class="btn waves-effect waves-light" type="submit" name="action">
                     <i class="material-icons ">visibility</i>
                 </button>
                 </form>
-                <form sec:authorize="isAuthenticated()" th:if="${#authentication.principal.id}==${post.owner.id}"   th:action ="@{/post/{postid}/edit(postid=${post.id})}" th:method="GET" th:object="${post}">
+                <form sec:authorize="isAuthenticated()" th:if="${#authentication.principal.id}==${post.owner.id}" th:action ="@{/post/{postid}/edit(postid=${post.id})}" th:method="GET" th:object="${post}">
                 <button class="btn waves-effect waves-light" type="submit" name="action">
                 <i class="material-icons ">border_color</i>
                 </button>

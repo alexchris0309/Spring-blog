@@ -16,10 +16,23 @@
     <h3>Description</h3>
     <input th:field="*{body}" />
     <br />
-    <button>Submit New Post</button>
+    <label for="fileupload">Select a file to upload</label>
+    <input type="hidden" id="fileupload" />
+    <button id="picker" type="button">Pick file</button>
+    <input type="submit" value="Submit" />
+<!--    <button>Submit New Post</button>-->
 </form>
 
+<!--<form>-->
+<!--    <label for="fileupload">Select a file to upload</label>-->
+<!--    <input type="hidden" id="fileupload" />-->
+<!--    <button id="picker" type="button">Pick file</button>-->
+<!--    <input type="submit" value="Submit" />-->
+<!--</form>-->
 
+<br>
+<br>
+<script src="../../static/js/posts.js"></script>
 <script src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
 
 </body>
